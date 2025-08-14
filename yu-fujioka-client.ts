@@ -30,8 +30,20 @@ function getOppositeDirection(direction: Direction): Direction {
 			// これが実行されることはない
 			return "right";
 	}
+	/* 以下でも同じことができるが、わかりやすさのために switch 文を使用
+    const index = directions.indexOf(direction);
+    return directions[(index + 2) % 4];
+  */
 }
 
+/*
+function findSafeDirection
+- 進行方向にブロックがない、敵がいない、逆進ではないことを確認し、その方角を返す
+- そうでなければ、次の方向を指定して findSafeDirection を再実行する
+- 4 方向全て試しても進める方向がなければ、ブロック、敵がいないことを条件に逆方向に引き返させる
+- 逆方向もだめなら、敵の方角に進む
+- 4 方向ブロックに囲まれていたら、身を投げる
+*/
 // todo: 同じ場所をぐるぐる回らないようにする
 function findSafeDirection(
 	direction: number,
